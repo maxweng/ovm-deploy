@@ -1,0 +1,65 @@
+{
+  "name": "union-contracts-ovm",
+  "version": "0.5.0",
+  "description": "Union smart contracts for Optimism",
+  "main": "scripts/deploy.js",
+  "scripts": {
+    "compile": "yarn hardhat compile",
+    "test": "yarn hardhat test",
+    "coverage": "yarn hardhat coverage --testfiles 'test-hardhat/unit/*.js'",
+    "docgen": "npx solidity-docgen --solc-module solc --output-structure contracts --templates ./docgen --solc-settings \"{remappings: ['@openzeppelin=$PWD/node_modules/@openzeppelin']}\" -i contracts/interfaces -o docs -e contracts/mocks",
+    "solhint": "npx solhint -f table contracts/**/*.sol",
+    "prettier:solidity": "npx prettier --write contracts/**/*.sol"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unioncredit/union-contracts-ovm.git"
+  },
+  "keywords": [
+    "defi",
+    "ethereum",
+    "credit",
+    "finance",
+    "blockchain",
+    "uniondao"
+  ],
+  "author": "Max Weng <max.m.weng@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@eth-optimism/hardhat-ovm": "^0.0.3",
+    "@openzeppelin/cli": "2.8.2",
+    "@openzeppelin/test-helpers": "0.5.4",
+    "@openzeppelin/upgrades": "2.8.0",
+    "commander": "^6.0.0",
+    "dotenv": "^6.2.0",
+    "ethers": "^5.0.0",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
+    "prettier-plugin-solidity": "^1.0.0-alpha.54",
+    "solhint-plugin-prettier": "^0.0.4",
+    "solidity-docgen": "^0.5.3"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.2",
+    "@nomiclabs/hardhat-waffle": "^2.0.1",
+    "@openzeppelin/contracts-ethereum-package": "2.5.0",
+    "@openzeppelin/hardhat-upgrades": "^1.8.0",
+    "@openzeppelin/test-environment": "^0.1.8",
+    "chai": "^4.2.0",
+    "codecov": "^3.7.1",
+    "eth-permit": "^0.1.9",
+    "ethereum-waffle": "^3.3.0",
+    "hardhat": "^2.1.2",
+    "hardhat-gas-reporter": "^1.0.4",
+    "inquirer": "^7.3.3",
+    "mocha": "^8.2.1",
+    "ora": "^4.0.4",
+    "solidity-coverage": "^0.7.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn prettier:solidity",
+      "pre-push": "yarn docgen"
+    }
+  }
+}
